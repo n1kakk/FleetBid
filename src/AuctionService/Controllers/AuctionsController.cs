@@ -3,6 +3,8 @@ using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Contracts;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +16,13 @@ public class AuctionsController : ControllerBase
 {
     private readonly AuctionDbContext _context;
     private readonly IMapper _mapper;
+    private readonly IPublishEndpoint _publishEndpoint;
 
-    public AuctionsController(AuctionDbContext context, IMapper mapper)
+    public AuctionsController(AuctionDbContext context, IMapper mapper, IPublishEndpoint publishEndpoint)
     {
         _context = context;
         _mapper = mapper;
+        _publishEndpoint = publishEndpoint;
     }
 
 
@@ -32,13 +36,10 @@ public class AuctionsController : ControllerBase
             query = query.Where(x => x.UpdatedAt.CompareTo(DateTime.Parse(date).ToUniversalTime())>0);
         }
 
-        //var auctions = await _context.Auctions
-        //    .Include(x => x.Item)
-        //    .OrderBy(x => x.Item.Make)
-        //    .ToListAsync();
-        //return _mapper.Map<List<AuctionDto>>(auctions);
         return await query.ProjectTo<AuctionDto>(_mapper.ConfigurationProvider).ToListAsync();
     }
+
+
     [HttpGet("{id}")]
     public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid id)
     {
@@ -56,10 +57,17 @@ public class AuctionsController : ControllerBase
         //TODO: add current user as seller
 
         auction.Seller = "test";
+
         _context.Auctions.Add(auction);
-        var result = await _context.SaveChangesAsync() > 0;  
-        if(!result) return BadRequest("Could not save changes to dataBase");
-        return CreatedAtAction(nameof(GetAuctionById), new {auction.Id}, _mapper.Map<AuctionDto>(auction));
+
+        var newAuction = _mapper.Map<AuctionDto>(auction);
+        await _publishEndpoint.Publish(_mapper.Map<AuctionCreated>(newAuction));
+
+        var result = await _context.SaveChangesAsync() > 0;
+
+        if (!result) return BadRequest("Could not save changes to dataBase");
+
+        return CreatedAtAction(nameof(GetAuctionById), new {auction.Id}, newAuction);
     }
 
 
@@ -71,7 +79,7 @@ public class AuctionsController : ControllerBase
             .FirstOrDefaultAsync (x => x.Id == id);
 
         if(auction == null) return NotFound();
-        //TODO: xcheck seller==username
+        //TODO: check seller==username
 
         auction.Item.Make = auctionDto.Make ?? auction.Item.Make;
         auction.Item.Model = auctionDto.Model ?? auction.Item.Model;
