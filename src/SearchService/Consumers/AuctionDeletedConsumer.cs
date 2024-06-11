@@ -1,5 +1,26 @@
-﻿namespace SearchService.Consumers;
+﻿using AutoMapper;
+using Contracts;
+using MassTransit;
+using MongoDB.Entities;
+using SearchService.Models;
 
-public class AuctionDeletedConsumer
+namespace SearchService.Consumers;
+
+public class AuctionDeletedConsumer: IConsumer<AuctionDeleted>
 {
+    private readonly IMapper _mapper;
+    public AuctionDeletedConsumer(IMapper mapper)
+    {
+        _mapper = mapper;
+    }
+    public async Task Consume(ConsumeContext<AuctionDeleted> context)
+    {
+        Console.WriteLine("Consuming auction deleted" + context.Message.Id);
+
+        var id = context.Message.Id;
+        var result = await DB.DeleteAsync<Item>(id);
+
+        if(!result.IsAcknowledged)
+            throw new MessageException(typeof(AuctionDeleted), "Problem deleting auction");
+    }
 }

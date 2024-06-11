@@ -93,7 +93,7 @@ public class AuctionsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> deleteAuction(Guid id)
+    public async Task<ActionResult> DeleteAuction(Guid id)
     {
         var auction = await _context.Auctions.FindAsync(id);
 
@@ -101,7 +101,11 @@ public class AuctionsController : ControllerBase
         //TODO: chack Seller==username
 
         _context.Auctions.Remove(auction);
+
+        await _publishEndpoint.Publish(new AuctionDeleted { Id = id.ToString() });
+
         var result = await _context.SaveChangesAsync() > 0;
+
         if (!result) return BadRequest("Could not update dataBase");
         return Ok();
     }

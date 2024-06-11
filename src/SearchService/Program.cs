@@ -15,6 +15,8 @@ builder.Services.AddHttpClient<AuctionServiceHttpClient>().AddPolicyHandler(GetP
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
+    x.AddConsumersFromNamespaceContaining<AuctionDeletedConsumer>();
+
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));
 
     x.UsingRabbitMq((context, cfg) =>
@@ -24,9 +26,16 @@ builder.Services.AddMassTransit(x =>
             e.UseMessageRetry(a => a.Interval(5, 5));
             e.ConfigureConsumer<AuctionCreatedConsumer>(context);
         });
+        cfg.ReceiveEndpoint("search-auction-deleted", e =>
+        {
+            e.UseMessageRetry(a => a.Interval(5, 5));
+            e.ConfigureConsumer<AuctionDeletedConsumer>(context);
+        });
 
         cfg.ConfigureEndpoints(context);
     });
+
+
 });
 
 
