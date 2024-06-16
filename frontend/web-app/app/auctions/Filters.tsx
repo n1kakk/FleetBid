@@ -59,6 +59,7 @@ export default function Filters() {
                     key={value}
                     onClick={() => setParams({filterBy: value})}
                     color={`${filterBy===value ? 'red' : 'gray'}`}
+                    className='focus:ring-0'
                 >
                     <Icon className="mt-1 mr-2"/>
                     {label}
@@ -75,6 +76,7 @@ export default function Filters() {
                     key={value}
                     onClick={() => setParams({orderBy: value})}
                     color={`${orderBy===value ? 'red' : 'gray'}`}
+                    className='focus:ring-0'
                 >
                     <Icon className="mt-1 mr-2"/>
                     {label}

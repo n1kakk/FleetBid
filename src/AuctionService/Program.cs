@@ -1,4 +1,5 @@
 using AuctionService.Data;
+using AuctionService.Services;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,12 @@ builder.Services.AddDbContext<AuctionDbContext>(opt => {
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 builder.Services.AddMassTransit(x =>
 {
+    x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction", false));
+
     x.AddEntityFrameworkOutbox<AuctionDbContext>(o =>
     {
         o.QueryDelay = TimeSpan.FromSeconds(10);
@@ -37,6 +42,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         opt.TokenValidationParameters.NameClaimType = "username";
     });
 
+builder.Services.AddGrpc();
+
+
 
 var app = builder.Build();
 
@@ -46,6 +54,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<GrpcAuctionService>();
 
 try
 {
