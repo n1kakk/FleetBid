@@ -1,11 +1,13 @@
 ﻿'use server'
 
+import { fetchWrapper } from '@/lib/fetchWrapper';
 import {PagedResult, Auction } from '../types';
+import { FieldValues } from 'react-hook-form';
 
 export async function GetData(query: string): Promise<PagedResult<Auction>>{
-    const res = await fetch(`http://localhost:6001/search${query}`);
+    return await fetchWrapper.get(`search${query}`)
+}
 
-    if(!res.ok) throw new Error('Failed to fetch data for searching');
-
-    return res.json();
+export async function createAuction(data: FieldValues){
+    return await fetchWrapper.post('auctions', data);
 }

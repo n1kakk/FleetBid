@@ -18,8 +18,11 @@ export const authOptions: NextAuthOptions ={
         })
     ],
     callbacks:{
-        async jwt({token, profile}){
+        async jwt({token, profile, account}){
             //console.log( {token, profile, account, user})
+            if (account) {
+                token.access_token = account.access_token;
+            }
             if(profile) {
                 token.username = profile.username
             }
@@ -27,7 +30,7 @@ export const authOptions: NextAuthOptions ={
         },
         async session({session, token}){
             if(token){
-                session.user.username = token.username
+                session.user.username = token.username;
             }
             return session;
         }
