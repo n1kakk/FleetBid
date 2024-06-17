@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewayService", "src\Gatew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiddingService", "src\BiddingService\BiddingService.csproj", "{DF99D5AE-0E56-4B2D-B5D8-9B3F2C92C7FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "src\NotificationService\NotificationService.csproj", "{3D8B4010-B375-4F96-BED2-2C203D2A6BA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{DF99D5AE-0E56-4B2D-B5D8-9B3F2C92C7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF99D5AE-0E56-4B2D-B5D8-9B3F2C92C7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF99D5AE-0E56-4B2D-B5D8-9B3F2C92C7FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8B4010-B375-4F96-BED2-2C203D2A6BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8B4010-B375-4F96-BED2-2C203D2A6BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8B4010-B375-4F96-BED2-2C203D2A6BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8B4010-B375-4F96-BED2-2C203D2A6BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{AEAC9646-2EA6-4C28-9D08-EA990F106E6D} = {76FD7C2D-05AC-43BB-B8EC-E0FC45EE885C}
 		{7DF8F82B-4A9E-4550-9679-147D9D7E4E31} = {76FD7C2D-05AC-43BB-B8EC-E0FC45EE885C}
 		{DF99D5AE-0E56-4B2D-B5D8-9B3F2C92C7FF} = {76FD7C2D-05AC-43BB-B8EC-E0FC45EE885C}
+		{3D8B4010-B375-4F96-BED2-2C203D2A6BA3} = {76FD7C2D-05AC-43BB-B8EC-E0FC45EE885C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BFB58C99-3C57-4842-9CC8-1A277D37ED22}
