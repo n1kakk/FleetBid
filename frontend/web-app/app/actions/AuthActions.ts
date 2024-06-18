@@ -1,4 +1,4 @@
-﻿'use server'
+﻿
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import {cookies, headers} from "next/headers";
@@ -35,6 +35,3 @@ export async function getTokenWorkaround() {
     return await getToken({req});
 }
 
-export async function getBidsForAuctions(id: string): Promise<Bid[]>{
-    return await fetchWrapper.get(`bids/${id}`);
-}

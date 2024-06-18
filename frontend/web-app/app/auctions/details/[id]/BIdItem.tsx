@@ -1,4 +1,4 @@
-﻿import { numberWithCommas } from '@/app/lib/numberWithComma';
+﻿import { numberWithComma } from '@/app/lib/numberWithComma';
 import { Bid } from '@/app/types'
 import { format } from 'date-fns';
 import React from 'react'
@@ -42,11 +42,11 @@ export default function BIdItem({bid}: Props) {
         `}>
             <div className='flex flex-col'>
                 <span>Bidder: {bid.bidder}</span>
-                <span className='text-gray-700 text-sm'>Time: {format(new Date(bid.bidTime), 'dd MMM yyyy h:mn a')}</span>
+                <span className='text-gray-700 text-sm'>Time: {format(new Date(bid.bidTime), 'dd MMM yyyy h:mm a')}</span>
             </div>
             <div className='flex flex-col text-right'>
                 <div className='text-xl font-semibold'>
-                    ${numberWithCommas(bid.amount)}
+                    ${numberWithComma(bid.amount)}
                 </div>
                 <div className='flex flex-row items-center'>
                     <span>{getBidInfo().text}</span>
