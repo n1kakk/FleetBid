@@ -1,8 +1,11 @@
-﻿import { getServerSession } from "next-auth";
+﻿'use server'
+import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import {cookies, headers} from "next/headers";
 import {NextApiRequest} from "next";
 import {getToken} from "next-auth/jwt";
+import { Bid } from "../types";
+import { fetchWrapper } from "@/lib/fetchWrapper";
 
 export async function getSession(){
     return await getServerSession(authOptions);
@@ -30,4 +33,8 @@ export async function getTokenWorkaround() {
     } as NextApiRequest;
     
     return await getToken({req});
+}
+
+export async function getBidsForAuctions(id: string): Promise<Bid[]>{
+    return await fetchWrapper.get(`bids/${id}`);
 }
