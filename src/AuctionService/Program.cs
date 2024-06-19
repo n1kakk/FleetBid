@@ -43,7 +43,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddGrpc();
-
+builder.Services.AddScoped<IAuctionRepo, AuctionRepo>();
 
 
 var app = builder.Build();
