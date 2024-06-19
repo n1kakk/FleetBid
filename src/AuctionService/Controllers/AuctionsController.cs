@@ -32,7 +32,7 @@ public class AuctionsController : ControllerBase
     {
         if(!ModelState.IsValid) return BadRequest(ModelState);
 
-        if(date == null) return BadRequest(); 
+        //if(date == null) return BadRequest(); 
 
         return await _auctionRepo.GetAuctionsAsync(date); 
     }
@@ -41,7 +41,7 @@ public class AuctionsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid id)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState);
+        //if (!ModelState.IsValid) return BadRequest(ModelState);
 
         var auction = await _auctionRepo.GetAuctionByIdAsync(id);
 
@@ -54,7 +54,7 @@ public class AuctionsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState);
+        //if (!ModelState.IsValid) return BadRequest(ModelState);
         var auction = _mapper.Map<Auction>(auctionDto);
 
         auction.Seller = User.Identity.Name;
