@@ -1,4 +1,5 @@
 using BiddingService.Consumers;
+using BiddingService.Repository;
 using BiddingService.Services;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -35,6 +36,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddHostedService<CheckAuctionFinished>();
 builder.Services.AddScoped<GrpcAuctionClient>();
+builder.Services.AddScoped<IBiddingRepo, BiddingRepo>();
 
 
 var app = builder.Build();
