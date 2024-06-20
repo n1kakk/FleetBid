@@ -75,7 +75,7 @@ public class AuctionsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateAuction(Guid id, UpdateAuctionDto auctionDto)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState);
+        //if (!ModelState.IsValid) return BadRequest(ModelState);
 
         var auction = await _auctionRepo.GetAuctionEntityByIdAsync(id);
 
@@ -101,7 +101,7 @@ public class AuctionsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteAuction(Guid id)
     {
-        if (!ModelState.IsValid) return BadRequest(ModelState);
+        //if (!ModelState.IsValid) return BadRequest(ModelState);
 
         var auction = await _auctionRepo.GetAuctionEntityByIdAsync(id);
 
