@@ -43,6 +43,7 @@ builder.Services.AddMassTransit(x =>
 
 
 });
+builder.Services.AddScoped<ISearchRepo, SearchRepo>();
 
 
 var app = builder.Build();
