@@ -21,6 +21,112 @@ services:
     ports: 
         - 5672:5672
         - 15672:15672
+ 
+  auctionservice:
+    image: ${DOCKER_REGISTRY-}auctionservice
+    build:
+        context: .
+        dockerfile: src/AuctionService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:7777
+      - ConnectionStrings__DefaultConnection=Server=postgres:5435;User Id=postgres;Password=postgrespw;Database=auction
+      - RabbitMq__Host=rabbimq
+      - IdentityServiceUrl=http://identityservice 
+      - Kestrel__Endpoints__Grpc__Protocols=Http2
+      - Kestrel__Endpoints__Grpc__Url=http://+:7777
+      - Kestrel__Endpoints__WebApi__Protocols=Http1
+      - Kestrel__Endpoints__WebApi__Url=http://+:80
+    ports: 
+      - 7001:8080
+      - 7777:7777
+    depends_on:
+      - postgres    
+      - rabbimq
+
+  searchservice:
+    image: ${DOCKER_REGISTRY-}searchservice
+    build:
+        context: .
+        dockerfile: src/SearchService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__MongoDbConnection=mongodb://root:mongopw@mongodb
+      - AuctionServiceURL=http://auctionservice
+      - RabbitMq__Host=rabbimq
+    ports: 
+      - 7002:8080
+    depends_on:
+      - mongodb
+      - rabbimq
+
+  identityservice:
+    image: ${DOCKER_REGISTRY-}identityservice
+    build:
+        context: .
+        dockerfile: src/IdentityService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__DefaultConnection=Server=postgres:5435;User Id=postgres;Password=postgrespw;Database=identity
+
+    ports: 
+      - 5000:8080
+    depends_on:
+      - postgres
+
+  gatewayservice:
+    image: ${DOCKER_REGISTRY-}gatewayservice
+    build:
+        context: .
+        dockerfile: src/GatewayService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    ports: 
+      - 6001:8080
+
+  bidsservice:
+    image: ${DOCKER_REGISTRY-}bidsservice
+    build:
+        context: .
+        dockerfile: src/BiddingService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__BidDBConnection=mongodb://root:mongopw@mongodb
+      - IdentityServiceUrl=http://identityservice
+      - GrpcAuction=http://auctionservice:7777
+      - RabbitMq__Host=rabbimq
+
+    ports: 
+      - 7003:8080
+    depends_on:
+      - mongodb
+      - rabbitmq 
+  
+  ntservice:
+    image: ${DOCKER_REGISTRY-}ntservice
+    build:
+        context: .
+        dockerfile: src/NotificationService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - RabbitMq__Host=rabbimq
+    ports: 
+      - 7004:8080
+    depends_on:
+      - rabbimq
+        
     
 volumes:
     pgdata:   
