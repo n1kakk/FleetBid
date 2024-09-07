@@ -6,7 +6,7 @@ The BidService is a microservice responsible for managing bids on auction items 
 ### Database Configuration
 - MongoDB: Utilizes MongoDB for data storage.
 - DbContext: Configured to use MongoClient for database interactions.
-- 
+  
 ### AutoMapper
 - Purpose: Automatically maps between DTOs and entities to simplify data transformations.
 
