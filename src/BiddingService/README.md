@@ -4,21 +4,21 @@ The BidService is a microservice responsible for managing bids on auction items 
 ## Key Components
 
 ### Database Configuration
-- MongoDB: Utilizes MongoDB for data storage.
+- [MongoDB](https://www.mongodb.com/): Utilizes MongoDB for data storage.
 - DbContext: Configured to use MongoClient for database interactions.
   
-### AutoMapper
+### [AutoMapper](https://automapper.org/)
 Automatically maps between DTOs and entities to simplify data transformations.
 
-### MassTransit
+### [MassTransit](https://masstransit.io/)
 - Message Bus: Manages message publishing and consumption using RabbitMQ.
 - Consumers: Listens for events such as AuctionCreated and processes them accordingly.
 
 ### Authentication
-- JWT: Uses JSON Web Tokens for secure authentication and authorization.
+- [JWT](https://jwt.io/): Uses JSON Web Tokens for secure authentication and authorization.
 - Identity Service: Configured with details from IdentityServiceUrl to validate tokens.
   
-### gRPC
+### [gRPC](https://grpc.io/)
 - Service: Provides a gRPC client to communicate efficiently with other microservices, such as querying auction details.
   
 ### Background Services
