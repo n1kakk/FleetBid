@@ -7,7 +7,7 @@ The AuctionService is a microservice responsible for managing auction operations
 - DbContext: Configured to use AuctionDbContext for database interactions.
 
 ### AutoMapper
-- Purpose: Automatically maps between DTOs and entities.
+Automatically maps between DTOs and entities.
 
 ### MassTransit
 - Message Bus: Handles message publishing and consumption using RabbitMQ.
@@ -18,10 +18,7 @@ The AuctionService is a microservice responsible for managing auction operations
 - Identity Service: Configured with details from IdentityServiceUrl to validate tokens.
 
 ### gRPC
-- Service: Provides a gRPC service for efficient communication between microservices.
-
-### Dependency Injection
-- Repositories: IAuctionRepo is implemented by AuctionRepo to handle data operations.
+Provides a gRPC service for efficient communication between microservices.
 
 ### Setup and Configuration
 - Services: Configures essential services, including controllers, AutoMapper, MassTransit, authentication, and gRPC.
