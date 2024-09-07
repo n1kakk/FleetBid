@@ -4,8 +4,8 @@ The IdentityService is a critical component of the FleetBid application responsi
 ## Key Functions
 
 ### User Authentication
-- Identity Management: Manages user identities and authentication using ASP.NET Identity and Duende IdentityServer.
-- JWT Tokens: Issues and validates JSON Web Tokens (JWT) for secure communication and authentication.
+- Identity Management: Manages user identities and authentication using [ASP.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-8.0) and [Duende IdentityServer](https://duendesoftware.com/).
+- JWT Tokens: Issues and validates [JSON Web Tokens (JWT)](https://jwt.io/) for secure communication and authentication.
 
 ### User Authorization
 Role-Based Access Control: Supports role-based access control to restrict access based on user roles and claims.
@@ -14,15 +14,15 @@ Role-Based Access Control: Supports role-based access control to restrict access
 Custom Profile Service: Provides user profile data for tokens, including custom claims like "username".
 
 ### Logging and Monitoring
-- Serilog: Utilizes Serilog for comprehensive logging, allowing monitoring and troubleshooting of authentication events.
+- [Serilog](https://serilog.net/): Utilizes Serilog for comprehensive logging, allowing monitoring and troubleshooting of authentication events.
 
 
 ## Technologies
-- ASP.NET Core Identity: Handles user management and authentication.
-- Duende IdentityServer: Provides authentication and authorization services with support for OAuth2 and OpenID Connect.
-- Entity Framework Core: Uses PostgreSQL for managing user data.
-- Serilog: Logs application events and errors for monitoring and diagnostics.
-- JWT: Implements JSON Web Tokens for secure token-based authentication.
+- [ASP.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-8.0): Handles user management and authentication.
+- [Duende IdentityServer](https://duendesoftware.com/): Provides authentication and authorization services with support for OAuth2 and OpenID Connect.
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/): Uses PostgreSQL for managing user data.
+- [Serilog](https://serilog.net/): Logs application events and errors for monitoring and diagnostics.
+- [JWT](https://jwt.io/): Implements JSON Web Tokens for secure token-based authentication.
 
   
 ## Setup and Configuration
