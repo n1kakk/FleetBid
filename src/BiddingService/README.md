@@ -8,7 +8,7 @@ The BidService is a microservice responsible for managing bids on auction items 
 - DbContext: Configured to use MongoClient for database interactions.
   
 ### AutoMapper
-- Purpose: Automatically maps between DTOs and entities to simplify data transformations.
+Automatically maps between DTOs and entities to simplify data transformations.
 
 ### MassTransit
 - Message Bus: Manages message publishing and consumption using RabbitMQ.
@@ -21,11 +21,8 @@ The BidService is a microservice responsible for managing bids on auction items 
 ### gRPC
 - Service: Provides a gRPC client to communicate efficiently with other microservices, such as querying auction details.
   
-### Dependency Injection
-- Repositories: IBiddingRepo is implemented by BiddingRepo to handle data operations related to bids.
-
 ### Background Services
-- Hosted Services: Includes background tasks such as CheckAuctionFinished to periodically check and update the status of auctions.
+Hosted Services: Includes background tasks such as CheckAuctionFinished to periodically check and update the status of auctions.
 
 ### Setup and Configuration
 - Services: Configures essential services, including controllers, AutoMapper, MassTransit, authentication, and gRPC.
