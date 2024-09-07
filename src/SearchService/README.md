@@ -10,10 +10,10 @@ Search API: Provides an endpoint to search for auction items using various param
 Consumers: Processes messages related to auction events (created, updated, deleted) from RabbitMQ to keep search indices up to date.
 
 ## Technologies
-- MassTransit: Manages message bus interactions with RabbitMQ for handling auction-related events.
-- Polly: Implements resilience and transient fault-handling policies for HTTP requests.
-- MongoDB: Utilized for storing and managing search data.
-- AutoMapper: Maps between DTOs and entities for data processing.
+- [MassTransit](https://masstransit.io/documentation/transports/rabbitmq): Manages message bus interactions with RabbitMQ for handling auction-related events.
+- [Polly](https://github.com/App-vNext/Polly): Implements resilience and transient fault-handling policies for HTTP requests.
+- [MongoDB](https://www.mongodb.com/): Utilized for storing and managing search data.
+- [AutoMapper](https://automapper.org/): Maps between DTOs and entities for data processing.
 
 ## Setup and Configuration
 
