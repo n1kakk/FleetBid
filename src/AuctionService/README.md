@@ -3,21 +3,21 @@ The AuctionService is a microservice responsible for managing auction operations
 
 ## Key Components
 ### Database Configuration
-- Entity Framework Core: Utilizes PostgreSQL for data storage.
+- [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/): Utilizes PostgreSQL for data storage.
 - DbContext: Configured to use AuctionDbContext for database interactions.
 
-### AutoMapper
+### [AutoMapper](https://automapper.org/)
 Automatically maps between DTOs and entities.
 
-### MassTransit
+### [MassTransit](https://masstransit.io/documentation/transports/rabbitmq)
 - Message Bus: Handles message publishing and consumption using RabbitMQ.
 - Entity Framework Outbox: Ensures reliable message delivery with PostgreSQL.
 
 ### Authentication
-- JWT: Uses JSON Web Tokens for secure authentication.
+- [JWT](https://jwt.io/): Uses JSON Web Tokens for secure authentication.
 - Identity Service: Configured with details from IdentityServiceUrl to validate tokens.
 
-### gRPC
+### [gRPC](https://grpc.io/)
 Provides a gRPC service for efficient communication between microservices.
 
 ## Setup and Configuration
