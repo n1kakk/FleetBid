@@ -20,7 +20,7 @@ Automatically maps between DTOs and entities.
 ### gRPC
 Provides a gRPC service for efficient communication between microservices.
 
-### Setup and Configuration
+## Setup and Configuration
 - Services: Configures essential services, including controllers, AutoMapper, MassTransit, authentication, and gRPC.
 - Authentication: JWT tokens are used for securing endpoints.
 - Routing: Maps controllers and gRPC services to handle incoming requests.
