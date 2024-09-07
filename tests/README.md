@@ -22,7 +22,7 @@ Integration tests verify the interactions between different components of the sy
 ### [xUnit](https://xunit.net/)
 - The same testing framework used for unit tests, suitable for integration tests as well.
 
-### [CustomWebAppFactory](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/testing/integration-testing?view=aspnetcore-5.0#custom-webapplicationfactory)
-- A class for creating an integration testing environment that allows running tests with a real web service. For more details, see the [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/testing/integration-testing?view=aspnetcore-5.0#custom-webapplicationfactory).
+### [CustomWebAppFactory](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-8.0)
+- A class for creating an integration testing environment that allows running tests with a real web service. 
 
 
