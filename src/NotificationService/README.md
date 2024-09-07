@@ -8,7 +8,7 @@ The NotificationService is responsible for real-time communication within the Fl
 - Notification Types: Sends notifications for various events such as auction creation, bid placement, and auction completion.
 
 ### Message Handling
-- [MassTransit Consumers]([https://masstransit.io/](https://masstransit.io/documentation/concepts/consumers)): Listens for and processes messages related to auctions and bids from RabbitMQ.
+- [MassTransit Consumers](https://masstransit.io/documentation/concepts/consumers): Listens for and processes messages related to auctions and bids from RabbitMQ.
 - Event Processing: Consumes messages like AuctionCreated, BidPlaced, and AuctionFinished, and pushes notifications to connected clients.
 
 
