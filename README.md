@@ -13,12 +13,13 @@ The project is based on a microservice architecture, with multiple services mana
 
 ![img](img/Architecture.jpg)
 
-- [AuctionService](src/AuctionService/README.md)
-- [BiddingService](src/BiddingService/README.md)
-- [GatewayService](src/GatewayService/README.md)
-- [IdentityService](src/IdentityService/README.md)
-- [NotificationService](src/NotificationService/README.md)
-- [SearchService](src/SearchService/README.md)
+### Services
+- [AuctionService](src/AuctionService)
+- [BiddingService](src/BiddingService)
+- [GatewayService](src/GatewayService)
+- [IdentityService](src/IdentityService)
+- [NotificationService](src/NotificationService)
+- [SearchService](src/SearchService)
 
 ## Technologies
 ### Backend
