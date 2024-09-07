@@ -40,8 +40,8 @@ The project is based on a microservice architecture, with multiple services mana
 - [Tailwind](https://tailwindcss.com/): CSS library for styling.
 
 ## Testing
+[Tests](tests)  
 Unit tests and integration tests have been conducted to verify the functionality and ensure proper interaction between all system components.
-[tests](tests)
 
 ## Deployment
 Docker and containers are used for building and deployment, allowing the application to be easily transferred and scaled in the cloud or locally.
