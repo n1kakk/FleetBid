@@ -17,7 +17,7 @@ Custom Profile Service: Provides user profile data for tokens, including custom 
 - Serilog: Utilizes Serilog for comprehensive logging, allowing monitoring and troubleshooting of authentication events.
 
 
-### Technologies
+## Technologies
 - ASP.NET Core Identity: Handles user management and authentication.
 - Duende IdentityServer: Provides authentication and authorization services with support for OAuth2 and OpenID Connect.
 - Entity Framework Core: Uses PostgreSQL for managing user data.
@@ -25,11 +25,11 @@ Custom Profile Service: Provides user profile data for tokens, including custom 
 - JWT: Implements JSON Web Tokens for secure token-based authentication.
 
   
-### Setup and Configuration
-- Service Configuration
+## Setup and Configuration
+### Service Configuration
 Configures services for user management, identity server setup, and authentication.
 Uses ApplicationDbContext for database operations and CustomProfileService for profile data handling.
 
-- Pipeline Configuration
+### Pipeline Configuration
 Sets up middleware for logging, routing, and handling requests.
 Configures IdentityServer for authentication and authorization.
