@@ -35,16 +35,17 @@ The project is based on a microservice architecture, with multiple services mana
 - [Docker](https://www.docker.com/): Application containerization.
 - [SignalR](https://learn.microsoft.com/en-us/aspnet/signalr/overview/getting-started/introduction-to-signalr): WebSockets for real-time functionality.
 
-  ### Frontend
+### Frontend
 - [React](https://react.dev/) and [Next.js](https://nextjs.org/): Frameworks used for building the user interface.
 - [Tailwind](https://tailwindcss.com/): CSS library for styling.
 
 ## Testing
 Unit tests and integration tests have been conducted to verify the functionality and ensure proper interaction between all system components.
+[tests](tests)
 
 ## Deployment
 Docker and containers are used for building and deployment, allowing the application to be easily transferred and scaled in the cloud or locally.
 
-### Why was the project created?
+## Why was the project created?
 This project was created with the goal of learning new technologies and gaining a deeper understanding of microservice architecture. Additionally, it provided hands-on experience with modern tools and frameworks such as gRPC, RabbitMQ, Docker
 
