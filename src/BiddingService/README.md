@@ -24,7 +24,7 @@ Automatically maps between DTOs and entities to simplify data transformations.
 ### Background Services
 Hosted Services: Includes background tasks such as CheckAuctionFinished to periodically check and update the status of auctions.
 
-### Setup and Configuration
+## Setup and Configuration
 - Services: Configures essential services, including controllers, AutoMapper, MassTransit, authentication, and gRPC.
 - Authentication: JWT tokens are used to secure endpoints.
 - Routing: Maps controllers to handle incoming requests and integrates with gRPC services.
