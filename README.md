@@ -6,14 +6,19 @@ FleetBid is a web application for car auctions, where users can register, list t
 - [Technologies](#Technologies)
 - [Testing](#Testing)
 - [Deployment](#Deployment)
-- [Contributing](#contributing)
-- [To do](#to-do)
-- [Команда проекта](#команда-проекта)
+- [Why was the project created?](#Why-was-the-project-created?)
 
 ## Architecture
 The project is based on a microservice architecture, with multiple services managing different aspects of the application.
 
 ![img](img/Architecture.jpg)
+
+- [AuctionService](src/AuctionService/README.md)
+- [BiddingService](src/BiddingService/README.md)
+- [GatewayService](src/GatewayService/README.md)
+- [IdentityService](src/IdentityService/README.md)
+- [NotificationService](src/NotificationService/README.md)
+- [SearchService](src/SearchService/README.md)
 
 ## Technologies
 ### Backend
